@@ -1,7 +1,7 @@
-import { trpc } from "../utils/trpc";
+import { api } from "@/utils/api";
 
 const Home = () => {
-  const res = trpc.todos.useQuery();
+  const res = api.user.getAll.useQuery();
 
   if (!res.data) {
     return <div>Loading...</div>;
@@ -10,11 +10,10 @@ const Home = () => {
   return (
     <div className="flex h-screen">
       <div className="m-auto">
-        <h1 className="text-3xl font-bold">Yet Another Todo App</h1>
         <ul>
-          {res.data.todos.map((item) => (
-            <li key={item.id}>{item.todo}</li>
-          ))}
+          {res.data.map((item) => {
+            return <li key={item}>{item}</li>;
+          })}
         </ul>
       </div>
     </div>
