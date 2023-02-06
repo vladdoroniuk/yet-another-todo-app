@@ -1,7 +1,7 @@
 import { router, publicProcedure } from "../trpc";
 
 export const userRouter = router({
-  getAll: publicProcedure.query(() => {
-    return ["Jake", "Mike"];
+  getAll: publicProcedure.query(async ({ ctx }) => {
+    return ctx.prisma.user.findMany();
   }),
 });

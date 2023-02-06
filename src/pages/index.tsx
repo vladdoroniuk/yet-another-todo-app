@@ -12,7 +12,7 @@ const Home = () => {
       <div className="m-auto">
         <ul>
           {res.data.map((item) => {
-            return <li key={item}>{item}</li>;
+            return <li key={item.id}>{item.fullname}</li>;
           })}
         </ul>
       </div>

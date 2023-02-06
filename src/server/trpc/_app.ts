@@ -1,6 +1,5 @@
-import { todoRouter } from "./todo";
-import { userRouter } from "./user";
-import { router } from "../trpc";
+import { todoRouter, userRouter } from "./router";
+import { router } from "./trpc";
 
 export const appRouter = router({
   user: userRouter,
