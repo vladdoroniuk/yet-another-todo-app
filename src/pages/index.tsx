@@ -1,12 +1,7 @@
-import { Login } from "@/components/Login";
+import { LoginForm } from "@/components/LoginForm";
 
 const Home = () => {
-  return (
-    <>
-      Yet Another Todo App
-      <Login text="Login component"></Login>
-    </>
-  );
+  return <>Yet Another Todo App</>;
 };
 
 export default Home;
