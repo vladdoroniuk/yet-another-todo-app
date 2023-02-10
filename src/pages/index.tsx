@@ -1,7 +1,11 @@
-import { LoginForm } from "@/components/LoginForm";
+import { TodoList } from "@/components/TodoList";
 
 const Home = () => {
-  return <>Yet Another Todo App</>;
+  return (
+    <div className="flex justify-center">
+      <TodoList userId={1} />
+    </div>
+  );
 };
 
 export default Home;

@@ -8,7 +8,7 @@ export const todoRouter = router({
         userId: z.number(),
       })
     )
-    .query(({ input, ctx }) => {
+    .query(async ({ input, ctx }) => {
       return ctx.prisma.todo.findMany({
         where: { userId: input.userId },
       });
