@@ -10,22 +10,24 @@ async function main() {
       email: "john@gmail.com",
       password: "12345",
       todos: {
-        create: {
-          id: 1,
-          title: "John's first todo",
-        },
+        create: [
+          {
+            id: 1,
+            title: "John's first todo",
+          },
+        ],
       },
     },
   });
 
-  await prisma.todo.upsert({
+  /*   await prisma.todo.upsert({
     where: { id: 2 },
     update: {},
     create: {
       userId: 1,
       title: "John's second todo",
     },
-  });
+  }); */
 
   await prisma.user.upsert({
     where: { id: 2 },
@@ -35,10 +37,12 @@ async function main() {
       email: "mile@gmail.com",
       password: "54321",
       todos: {
-        create: {
-          id: 3,
-          title: "Mike's first todo",
-        },
+        create: [
+          {
+            id: 3,
+            title: "Mike's first todo",
+          },
+        ],
       },
     },
   });
