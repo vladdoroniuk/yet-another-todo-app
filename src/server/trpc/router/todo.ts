@@ -24,27 +24,34 @@ export const todoRouter = router({
   create: publicProcedure
     .input(z.object({ userId: z.number(), title: z.string() }))
     .query(async ({ input, ctx }) => {
-      const Todo = await ctx.prisma.todo.create({
+      const res = await ctx.prisma.todo.create({
         data: {
           userId: input.userId,
           title: input.title,
         },
       });
 
-      return Todo;
+      return res;
     }),
   update: publicProcedure
     .input(z.object({ userId: z.number(), todoId: z.number() }))
     .query(async ({ input, ctx }) => {
       return ctx.prisma.todo.findFirst({
-        where: { userId: input.userId, id: input.todoId },
+        where: {
+          userId: input.userId,
+          id: input.todoId,
+        },
       });
     }),
   delete: publicProcedure
-    .input(z.object({ userId: z.number(), todoId: z.number() }))
+    .input(z.object({ todoId: z.number() }))
     .query(async ({ input, ctx }) => {
-      return ctx.prisma.todo.findFirst({
-        where: { userId: input.userId, id: input.todoId },
+      const res = await ctx.prisma.todo.delete({
+        where: {
+          id: input.todoId,
+        },
       });
+
+      return res;
     }),
 });
